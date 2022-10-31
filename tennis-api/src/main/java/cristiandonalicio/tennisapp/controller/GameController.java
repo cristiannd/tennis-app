@@ -31,6 +31,14 @@ public class GameController {
             .body(savedGame);
   }
 
+  @PutMapping
+  public ResponseEntity<GameDTO> updateGame(@RequestBody GameDTO gameDTO) {
+    GameDTO updatedGame = gameService.update(gameDTO);
+    return ResponseEntity
+            .status(HttpStatus.CREATED)
+            .body(updatedGame);
+  }
+
   @DeleteMapping("/{id}")
   public ResponseEntity<Void> deleteGame(@PathVariable Long id) {
     gameService.delete(id);

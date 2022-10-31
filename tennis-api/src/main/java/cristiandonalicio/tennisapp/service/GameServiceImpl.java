@@ -64,9 +64,10 @@ public class GameServiceImpl implements GameService {
 
   @Override
   public GameDTO update(GameDTO gameDTO) {
+    Game updateGame = gameMapper.fromDTO(gameDTO);
+    Game updatedGame = gameRepository.save(updateGame);
 
-
-    return null;
+    return gameMapper.toDTO(updatedGame);
   }
 
   @Override
